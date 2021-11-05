@@ -1,2 +1,2 @@
-INSERT INTO USER(ID, USERNAME, PASSWORD) VALUES (seq_users.nextval, 'erika.muller29', 'pass1');
-INSERT INTO USER_DETAILS(ID, USER_ID, USERNAME, FIRST_NAME, LAST_NAME, EMAIL) VALUES (seq_users_details.nextval, 1, 's','sf', 'a@gmail.com');
+INSERT INTO USER(USERNAME, PASSWORD) VALUES ('erika.muller29', 'pass1');
+INSERT INTO USER_DETAILS(USERNAME, FIRST_NAME, LAST_NAME, EMAIL) VALUES ('erika.muller29','Erika','Muller','erika.muller@gmail.com');
