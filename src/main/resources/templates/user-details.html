@@ -1,0 +1,38 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home</title>
+</head>
+<body>
+
+<div>
+    <div class="container main-content">
+        <div class="row">
+            <div class="col-7">
+                <h3>User Details</h3>
+            </div>
+        </div>
+        <table id="table" class="table table-striped table-sm">
+            <thead>
+            <th scope="col">#</th>
+            <th scope="col">Username</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Email Address</th>
+            </thead>
+            <tbody>
+            <tr th:each="userDetail : ${userDetails}">
+                <th scope="row" th:text="${userDetail.id}"></th>
+                <td th:text="${userDetail.username}"></td>
+                <td th:text="${userDetail.firstName}"></td>
+                <td th:text="${userDetail.lastName}"></td>
+                <td th:text="${userDetail.email}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script th:src="@{/js/table.js}"></script>
+</div>
+</body>
+</html>

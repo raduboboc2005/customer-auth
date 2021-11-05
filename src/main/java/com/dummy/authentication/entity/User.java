@@ -1,12 +1,14 @@
 package com.dummy.authentication.entity;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "USER")
-@Data
+@Getter
+@Setter
 public class User {
 
     @Id
