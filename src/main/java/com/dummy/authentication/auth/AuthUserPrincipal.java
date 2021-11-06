@@ -1,11 +1,12 @@
 package com.dummy.authentication.auth;
 
+import com.dummy.authentication.entity.AuthGroup;
 import com.dummy.authentication.entity.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import java.util.Collection;
-import java.util.Collections;
+
+import java.util.*;
 
 /**
  * used for storing information about the authenticated user
@@ -13,14 +14,25 @@ import java.util.Collections;
 public class AuthUserPrincipal implements UserDetails {
 
     private User user;
+    private List<AuthGroup> authGroups;
 
-    public AuthUserPrincipal(User user) {
+    public AuthUserPrincipal(User user, List<AuthGroup> authGroups) {
         this.user = user;
+        this.authGroups = authGroups;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singleton(new SimpleGrantedAuthority("USER"));
+        if(authGroups == null) {
+            return Collections.emptySet();
+        }
+
+        Set<SimpleGrantedAuthority> grantedAuthorities = new HashSet<>();
+        authGroups.forEach(authGroup -> {
+            grantedAuthorities.add(new SimpleGrantedAuthority(authGroup.getAuthGroup()));
+        });
+
+        return grantedAuthorities;
     }
 
     @Override
