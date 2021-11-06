@@ -1,2 +1,2 @@
-INSERT INTO USER(USERNAME, PASSWORD) VALUES ('erika.muller29', 'pass1');
+INSERT INTO USER(USERNAME, PASSWORD) VALUES ('erika.muller29', '$2a$11$2i4zzsHoVnPlfmivSp11Ae38tO/tPQSzHUMsBS19tP8v6AoaIl82K');
 INSERT INTO USER_DETAILS(USERNAME, FIRST_NAME, LAST_NAME, EMAIL) VALUES ('erika.muller29','Erika','Muller','erika.muller@gmail.com');
