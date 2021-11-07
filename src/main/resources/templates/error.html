@@ -1,0 +1,21 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5" lang="en">
+<head>
+    <title>Error</title>
+</head>
+<body>
+<div>
+    <div class="container main-content">
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-danger"><h3 th:text="${error}">Status</h3></li>
+            <li class="list-group-item" th:text="'Status code: '+ ${status}"></li>
+        </ul>
+        <p><a href="/" th:href="@{/}">Back to home page</a></p>
+        <div sec:authorize="isAuthenticated()">
+            <a th:href="@{/logout}">Logout</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

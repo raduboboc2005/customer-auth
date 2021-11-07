@@ -16,9 +16,19 @@ public class UserController {
     @Autowired
     private UserDetailsService userDetailsService;
 
-    @GetMapping(value = {"/","/index"})
+    @GetMapping(value = {"/", "/index"})
     public String getHomePage(Model model) {
         return "index";
+    }
+
+    @GetMapping(value = "/login")
+    public String getLoginPage(Model model) {
+        return "login";
+    }
+
+    @GetMapping(value = "/logout-success")
+    public String getLogoutPage(Model model) {
+        return "logout";
     }
 
     @GetMapping(value = "/user/details")
