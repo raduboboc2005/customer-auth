@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="DEBUG">
+    <Properties>
+        <Property name="log-path">C:\logs</Property>
+    </Properties>
+    <Appenders>
+        <RollingFile name="RollingFile" fileName="${log-path}/dummy-authentication.log">
+            <PatternLayout>
+                <pattern>%d{YYYY-MM-dd HH:mm:ss,SSS} %-5level | %logger{36}}%msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="50 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="8"/>
+        </RollingFile>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{YYYY-MM-dd HH:mm:ss,SSS} %-5level | %logger{36}}%msg%n"/>
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Logger name="dummyauthentication" level="debug" additivity="false">
+            <appender-ref ref="RollingFile" level="info"/>
+            <appender-ref ref="Console" level="warn"/>
+        </Logger>
+        <Root level="debug" additivity="false">
+            <appender-ref ref="RollingFile" level="info"/>
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+</Configuration>

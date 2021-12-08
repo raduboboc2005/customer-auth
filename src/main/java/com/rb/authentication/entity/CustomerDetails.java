@@ -1,4 +1,4 @@
-package com.dummy.authentication.entity;
+package com.rb.authentication.entity;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -6,19 +6,19 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "USER_DETAILS")
+@Table(name = "CUSTOMER_DETAILS")
 @Getter
 @Setter
-public class UserDetails {
+public class CustomerDetails {
 
     @Id
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "userDetails")
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "customerDetails")
     @PrimaryKeyJoinColumn
-    private User user;
+    private Customer customer;
 
     @Column(name = "USERNAME", unique = true, nullable = false)
     private String username;
@@ -28,7 +28,4 @@ public class UserDetails {
 
     @Column(name = "LAST_NAME", nullable = false)
     private String lastName;
-
-    @Column(name = "EMAIL", nullable = false, unique = true)
-    private String email;
 }

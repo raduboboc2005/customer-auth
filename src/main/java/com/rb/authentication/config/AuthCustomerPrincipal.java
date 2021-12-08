@@ -1,23 +1,20 @@
-package com.dummy.authentication.auth;
+package com.rb.authentication.config;
 
-import com.dummy.authentication.entity.AuthGroup;
-import com.dummy.authentication.entity.User;
+import com.rb.authentication.entity.AuthGroup;
+import com.rb.authentication.entity.Customer;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.*;
 
-/**
- * used for storing information about the authenticated user
- */
-public class AuthUserPrincipal implements UserDetails {
+public class AuthCustomerPrincipal implements UserDetails {
 
-    private User user;
+    private Customer customer;
     private List<AuthGroup> authGroups;
 
-    public AuthUserPrincipal(User user, List<AuthGroup> authGroups) {
-        this.user = user;
+    public AuthCustomerPrincipal(Customer customer, List<AuthGroup> authGroups) {
+        this.customer = customer;
         this.authGroups = authGroups;
     }
 
@@ -37,12 +34,12 @@ public class AuthUserPrincipal implements UserDetails {
 
     @Override
     public String getPassword() {
-        return this.user.getPassword();
+        return this.customer.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return this.user.getUsername();
+        return this.customer.getUsername();
     }
 
     @Override

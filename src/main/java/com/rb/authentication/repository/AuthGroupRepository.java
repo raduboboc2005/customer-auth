@@ -1,6 +1,6 @@
-package com.dummy.authentication.repository;
+package com.rb.authentication.repository;
 
-import com.dummy.authentication.entity.AuthGroup;
+import com.rb.authentication.entity.AuthGroup;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

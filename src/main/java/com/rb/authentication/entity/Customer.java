@@ -1,4 +1,4 @@
-package com.dummy.authentication.entity;
+package com.rb.authentication.entity;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -6,13 +6,13 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "USER")
+@Table(name = "CUSTOMER")
 @Getter
 @Setter
-public class User {
+public class Customer {
 
     @Id
-    @Column(name = "USER_ID")
+    @Column(name = "CUSTOMER_ID")
     private Long id;
 
     @Column(name = "USERNAME", nullable = false, unique = true)
@@ -23,6 +23,6 @@ public class User {
 
     @OneToOne
     @MapsId
-    @JoinColumn(name = "USER_ID")
-    private UserDetails userDetails;
+    @JoinColumn(name = "CUSTOMER_ID")
+    private CustomerDetails customerDetails;
 }

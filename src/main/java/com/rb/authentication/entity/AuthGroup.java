@@ -1,4 +1,4 @@
-package com.dummy.authentication.entity;
+package com.rb.authentication.entity;
 
 import lombok.Getter;
 import lombok.Setter;

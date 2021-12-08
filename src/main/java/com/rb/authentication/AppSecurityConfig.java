@@ -1,6 +1,6 @@
-package com.dummy.authentication;
+package com.rb.authentication;
 
-import com.dummy.authentication.auth.AuthUserDetailsService;
+import com.rb.authentication.config.AuthCustomerDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,12 +20,12 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
-    private AuthUserDetailsService authUserDetailsService;
+    private AuthCustomerDetailsService authCustomerDetailsService;
 
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
-        provider.setUserDetailsService(authUserDetailsService);
+        provider.setUserDetailsService(authCustomerDetailsService);
         provider.setPasswordEncoder(new BCryptPasswordEncoder(11));
         provider.setAuthoritiesMapper(authoritiesMapper());
 
@@ -42,8 +42,8 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.authenticationProvider(authenticationProvider());
+    protected void configure(AuthenticationManagerBuilder config) throws Exception {
+        config.authenticationProvider(authenticationProvider());
     }
 
     @Override
@@ -61,6 +61,5 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
                 .clearAuthentication(true)
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/logout-success").permitAll();
-
     }
 }
