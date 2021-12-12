@@ -1,0 +1,46 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5" lang="en">
+<head>
+  <title>Home</title>
+</head>
+<body>
+<div sec:authorize="isAuthenticated()">
+  <a th:href="@{/logout}">Logout</a>
+</div>
+
+<div>
+  <a th:href="@{/index}">Back</a>
+</div>
+<div>
+  <div class="container main-content">
+    <div class="row">
+      <div class="col-7">
+        <h3>Customer Details</h3>
+      </div>
+    </div>
+    <table id="table" class="table table-striped table-sm">
+      <thead>
+      <th scope="col">ISBN</th>
+      <th scope="col">Title</th>
+      <th scope="col">Author</th>
+      <th scope="col">Stock Copies</th>
+      </thead>
+      <tbody>
+      <tr th:each="bookDTO : ${books}">
+        <td th:text="${bookDTO.isbn}"></td>
+        <td th:text="${bookDTO.title}"></td>
+        <td th:text="${bookDTO.author}"></td>
+        <td th:text="${bookDTO.stockCopies}"></td>
+        <td>
+          <a th:href="@{'/edit/' + ${bookDTO.isbn}}">Edit Book</a>
+          <a th:href="@{'/delete/' + ${bookDTO.isbn}}">Delete Book</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+  <script th:src="@{/js/table.js}"></script>
+</div>
+</body>
+</html>

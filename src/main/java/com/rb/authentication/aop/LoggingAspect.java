@@ -28,7 +28,7 @@ import static com.rb.authentication.aop.LoggingBean.Status.SUCCESS;
 @Aspect
 @Component
 public class LoggingAspect {
-    public static final String LOGGING_STATS = "logging.DummyAuthenticationStatus";
+    public static final String LOGGING_STATS = "logging.CustomerAuthenticationStatus";
 
     private static final String LOGGING_SUCCESS_MESSAGE = "Successfully completed %s call";
     private static final Logger LOGGER = LoggerFactory.getLogger(LOGGING_STATS);

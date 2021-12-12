@@ -1,0 +1,50 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5" lang="en">
+<head>
+  <title>Home</title>
+</head>
+<body>
+<div sec:authorize="isAuthenticated()">
+  <a th:href="@{/logout}">Logout</a>
+</div>
+
+<div>
+  <a th:href="@{/index}">Back</a>
+</div>
+<div>
+  <div class="container main-content">
+    <div class="row">
+      <div class="col-7">
+        <h3>Add New Book</h3>
+      </div>
+    </div>
+    <form action="#" th:action="@{/save}" th:object="${bookDTO}"
+          method="post">
+      <table border="0" cellpadding="10">
+        <tr>
+          <td>Book Title:</td>
+          <td><input type="text" th:field="*{title}" /></td>
+        </tr>
+        <tr>
+          <td>Author:</td>
+          <td><input type="text" th:field="*{author}" /></td>
+        </tr>
+        <tr>
+          <td>ISBN:</td>
+          <td><input type="text" th:field="*{isbn}" /></td>
+        </tr>
+        <tr>
+          <td>Stock copies:</td>
+          <td><input type="text" th:field="*{stockCopies}" /></td>
+        </tr>
+        <tr>
+          <td colspan="2"><button type="submit">Save</button> </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+  <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+  <script th:src="@{/js/table.js}"></script>
+</div>
+</body>
+</html>
